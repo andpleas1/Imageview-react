@@ -1,5 +1,5 @@
 // * Dependencies
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 // * Components
 import Mylist from './components/imageMove/Mylist';
 // * CSS

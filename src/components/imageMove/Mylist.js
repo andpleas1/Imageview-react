@@ -1,5 +1,5 @@
 // * Dependencies
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Mylist = ({data, clickFunction, btnState})=>{
     
@@ -13,7 +13,7 @@ const Mylist = ({data, clickFunction, btnState})=>{
 
     return(
         <div className='col-lg-2 text-center' onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-            <img src={data.img}/>
+            <img src={data.img} alt={"terrific animation"} />
             <p>{data.title}</p>
             { btnState === "Add"?
                 <button onClick={clickNewFunction} style={{ visibility: hover ? "visible": "hidden" }} >Add</button>
