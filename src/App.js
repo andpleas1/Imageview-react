@@ -1,6 +1,5 @@
 // * CSS
 import './App.css';
-// import "bootstrap/dist/css/bootstrap.min.css";
 // * Components
 import ImageView from './components/ImageView';
 import {useState} from 'react';
