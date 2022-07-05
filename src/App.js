@@ -1,12 +1,9 @@
-// * Dependencies
-import {useState, useEffect} from 'react';
-// * Components
-import Mylist from './components/imageMove/Mylist';
 // * CSS
 import './App.css';
-import "bootstrap/dist/css/bootstrap.min.css";
-
-
+// import "bootstrap/dist/css/bootstrap.min.css";
+// * Components
+import ImageView from './components/ImageView';
+import {useState} from 'react';
 
 function App() {
   
@@ -46,14 +43,13 @@ function App() {
   ];
   
   const [initialData, setInitialData] = useState(imgData);
-  const[addedItems, setAddedItems] =useState([]);
+  const [addedItems, setAddedItems] = useState([]);
 
   // Function to add image on Recommend List and remove image on Mylist List
   const addItem = (data) => {
     setAddedItems([...addedItems, data]);
     const values = initialData.filter(initialData => initialData.id !== data.id);
     setInitialData(values);
-
   }
   
   // Function to remove image on Recomend List and add image on Mylist list
@@ -64,27 +60,27 @@ function App() {
   }
  
   return (
-    <div className="container">
-        <div className='row'>
-          <div className='card'> 
-            <h1>Mylist</h1>
-            <div className='row'>
-              {initialData.map((data, index) =>{ 
-                return <Mylist key={index} data={data} clickFunction={addItem} btnState="Add"/>
-              })}
+    <div className="App">
+      <h1>Mylist</h1>
+      <div className='images-view'>
+        {initialData.map((data, index) =>{ 
+          return (
+            <div className="image-view" key={index}>
+              <ImageView data={data} clickFunction={addItem} btnState="Add"/>
             </div>
-          </div>
-        </div>
-        <div className='row'>
-          <div className='card'> 
-            <h1>Recommended</h1>
-            <div className='row'>
-              {addedItems.map((data, index) =>{ 
-                  return <Mylist key={index} data={data} clickFunction={removeItem} btnState="Remove" />
-              })}
+          )
+        })}
+      </div>
+      <h1>Recommended</h1>
+      <div className='images-view'>
+        {addedItems.map((data, index) =>{ 
+          return (
+            <div className="image-view" key={index}>
+              <ImageView data={data} clickFunction={removeItem} btnState="Remove" />
             </div>
-          </div>
-        </div>
+          )
+        })}
+      </div>
     </div>
   );
 }
